@@ -4,10 +4,9 @@ import re
 
 
 class Thompson:
-	
 	def convertir(self,cadena):
 		cadena=cadena
-		automata_final=[]
+		automataFinal=[]
 		abecedario=string.ascii_lowercase
 		error=False
 		lenguaje=[]
@@ -28,35 +27,35 @@ class Thompson:
 			ms.showerror('Cadena Invalida', 'Ingresa otra cadena')
 		
 		#fin de bloque para validar cadena
-		automata_final.append(self.obtenerCerraduraEstrella(cadena))
-		automata_final.append(self.obtenerCerraduraPositiva(cadena))
-		print(automata_final)
+		automataFinal.append(self.obtenerCerraduraEstrella(cadena))
+		automataFinal.append(self.obtenerCerraduraPositiva(cadena))
+		print(automataFinal)
 
 
 
 	
 	def obtenerCerraduraEstrella(self,cadena):
 		automata=[]
-		expresion_normal=[]
-		expresion_parentesis=[]
-		lista_completa=[]
-		expresion_normal=re.findall("\w\*",cadena)
-		expresion_parentesis=re.findall("\(\w+\)\*",cadena)
-		lista_completa+=expresion_normal
-		lista_completa+=expresion_parentesis
-		automata.append(self.plantillaEstrella(lista_completa))
+		expresionNormal=[]
+		expresionParentesis=[]
+		listaCompleta=[]
+		expresionNormal=re.findall("\w\*",cadena)
+		expresionParentesis=re.findall("\(\w+\)\*",cadena)
+		listaCompleta+=expresionNormal
+		listaCompleta+=expresionParentesis
+		automata.append(self.plantillaEstrella(listaCompleta))
 		return automata
 
 	def obtenerCerraduraPositiva(self,cadena):
 		automata=[]
-		lista_completa=[]
-		expresion_normal=[]
-		expresion_parentesis=[]
-		expresion_normal=re.findall("\w\+",cadena)
-		expresion_parentesis=re.findall("\(\w+\)\+",cadena)
-		lista_completa+=expresion_normal
-		lista_completa+=expresion_parentesis
-		automata.append(self.plantillaPositiva(lista_completa))
+		listaCompleta=[]
+		expresionNormal=[]
+		expresionParentesis=[]
+		expresionNormal=re.findall("\w\+",cadena)
+		expresionParentesis=re.findall("\(\w+\)\+",cadena)
+		listaCompleta+=expresionNormal
+		listaCompleta+=expresionParentesis
+		automata.append(self.plantillaPositiva(listaCompleta))
 		return automata
 
 	def plantillaPositiva(self,Lista):
